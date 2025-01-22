@@ -1,0 +1,142 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\Ancient_Protocol\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\game.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\game.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\misc\\spritesheetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\misc\\spritesheetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\misc\\statebasedpath.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\misc\\statebasedpath.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\renderables\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\renderables\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\renderables\\irenderable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\renderables\\irenderable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\aprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\aprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SpriteSheetManager.cs",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\SpriteSheetManager.cs",
+              "RelativeDocumentMoniker": "Game\\Misc\\SpriteSheetManager.cs",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\SpriteSheetManager.cs",
+              "RelativeToolTip": "Game\\Misc\\SpriteSheetManager.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAQwAkAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T19:19:22.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StateBasedPath.cs",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\StateBasedPath.cs",
+              "RelativeDocumentMoniker": "Game\\Misc\\StateBasedPath.cs",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\StateBasedPath.cs",
+              "RelativeToolTip": "Game\\Misc\\StateBasedPath.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAAAHsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T15:40:03.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Program.cs",
+              "RelativeDocumentMoniker": "Game\\Program.cs",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Program.cs",
+              "RelativeToolTip": "Game\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T13:53:51.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IRenderable.cs",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Renderables\\IRenderable.cs",
+              "RelativeDocumentMoniker": "Game\\Renderables\\IRenderable.cs",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Renderables\\IRenderable.cs",
+              "RelativeToolTip": "Game\\Renderables\\IRenderable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T09:35:02.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Renderables\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Game\\Renderables\\Player\\Player.cs",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Renderables\\Player\\Player.cs",
+              "RelativeToolTip": "Game\\Renderables\\Player\\Player.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAxwBgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T09:34:53.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AProtocol.cs",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\AProtocol.cs",
+              "RelativeDocumentMoniker": "Game\\AProtocol.cs",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\AProtocol.cs",
+              "RelativeToolTip": "Game\\AProtocol.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T09:30:17.363Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.csproj",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Game.csproj",
+              "RelativeDocumentMoniker": "Game\\Game.csproj",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Game.csproj",
+              "RelativeToolTip": "Game\\Game.csproj",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-22T09:29:43.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
