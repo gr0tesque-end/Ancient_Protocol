@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game;
 
-public class Game1 
+public class AProtocol 
     : Microsoft.Xna.Framework.Game
 {
     private GraphicsDeviceManager _graphics;
@@ -13,26 +13,26 @@ public class Game1
 
     private Player _player;
 
-    public Game1()
+    public AProtocol()
     {
         _graphics = new GraphicsDeviceManager(this);
         _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
         _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-        _graphics.IsFullScreen = true;
+        _graphics.IsFullScreen = false;
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
 
     protected override void Initialize()
     {
-
+        _player = new Player(new Vector2(940f, 440f), _graphics.GraphicsDevice);
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+        _player.LoadContent(this.Content);
     }
 
     protected override void Update(GameTime gameTime)
@@ -40,6 +40,7 @@ public class Game1
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
+        _player.Update(gameTime);
         base.Update(gameTime);
     }
 
@@ -47,6 +48,9 @@ public class Game1
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
+        _spriteBatch.Begin();
+        _player.Draw(_spriteBatch);
+        _spriteBatch.End();
         base.Draw(gameTime);
     }
 }

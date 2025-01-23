@@ -1,3 +1,3 @@
 ﻿
-using var game = new Game.Game1();
+using var game = new Game.AProtocol();
 game.Run();

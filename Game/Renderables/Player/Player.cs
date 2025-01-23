@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Concurrent;
 using Game.Misc;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -15,12 +12,18 @@ public enum PlayerState
     Idle,
     Walking
 }
-public enum Direction: byte
+[Flags]
+public enum Direction : byte
 {
-    N = 10,
-    S = 11,
-    W = 1,
-    E = 0
+    N = 2,    // North
+    S = 4,    // South
+    W = 8,    // West
+    E = 16,   // East
+
+    SE = S | E, // South-East
+    SW = S | W, // South-West
+    NW = N | W, // North-West
+    NE = N | E  // North-East
 }
 public class Player
     : IRenderable
@@ -31,166 +34,133 @@ public class Player
     public Vector2 Velocity { get => _velocity; private set => _velocity = value; }
     public Texture2D CurrentTexture { get; private set; }
 
-    private Dictionary<(PlayerState, Direction), Texture2D[]> _animations;
-    private PlayerState _state;
-    private Direction _direction;
-    private int _currentFrame;
-    private float _animationTimer;
-    private float _animationSpeed = 0.1f; // Time per frame in seconds
+    private ConcurrentDictionary<Direction, SpriteSheetManager> _animTextures;
+    private SpriteSheetManager _idleSpriteManager;
 
-    private StateBasedPath _path;
+    public PlayerState state;
+    public Direction direction;
+    private GraphicsDevice _device;
+    byte frame = 0;
 
-    public Player(Vector2 startPosition)
+    public Player(Vector2 startPosition, GraphicsDevice device)
     {
         Position = startPosition;
-        _state = PlayerState.Idle;
-        _direction = Direction.S;
+        _device = device;
+        state = PlayerState.Idle;
+        direction = Direction.S;
     }
 
     public void LoadContent(ContentManager content)
     {
-        // Load animations for each state and direction
-        _animations = new Dictionary<(PlayerState, Direction), Texture2D[]>
+        _animTextures = new ConcurrentDictionary<Direction, SpriteSheetManager>();
+        _idleSpriteManager = new SpriteSheetManager() { IsAnimation = false };
+        _idleSpriteManager.LoadSpritesheet("Player/Default/#idle", _device, content);
+
+        /*Parallel.ForEach(DirectionHelper.ClockwiseOrder, (dir) =>
         {
-            {
-                (PlayerState.Idle, Direction.S), new[] {
-                content.Load<Texture2D>("Player/Default_Separate/Idle/S#Idle1")
-                }
-            },
+            _animTextures.TryAdd(
+                    dir,
+                    new SpriteSheetManager() { IsAnimation = true }
+                        .LoadSpritesheet(
+                            $"Player/Default/{dir}#walking",
+                            _device,
+                            content)
+                );
+        });*/
 
-            {
-                (PlayerState.Idle, Direction.Up), new[] {
-                content.Load<Texture2D>("idle_up_1")
-                }
-            },
-            { 
-                (PlayerState.Idle, Direction.Left), new[] {
-                    content.Load<Texture2D>("idle_left_1") 
-                } 
-            },
-            { 
-                (PlayerState.Idle, Direction.Right), new[] { content.Load<Texture2D>("idle_right_1") 
-                } 
-            },
-
-            { 
-                (PlayerState.Walking, Direction.Down), new[]
-                {
-                    content.Load<Texture2D>("walk_down_1"),
-                    content.Load<Texture2D>("walk_down_2"),
-                    content.Load<Texture2D>("walk_down_3")
-                }
-            },
-            { 
-                (PlayerState.Walking, Direction.Up), new[]
-                {
-                    content.Load<Texture2D>("walk_up_1"),
-                    content.Load<Texture2D>("walk_up_2"),
-                    content.Load<Texture2D>("walk_up_3")
-                }
-            },
-            { 
-                (PlayerState.Walking, Direction.Left), new[]
-                {
-                    content.Load<Texture2D>("walk_left_1"),
-                    content.Load<Texture2D>("walk_left_2"),
-                    content.Load<Texture2D>("walk_left_3")
-                }
-            },
-            { 
-                (PlayerState.Walking, Direction.Right), new[]
-                {
-                    content.Load<Texture2D>("walk_right_1"),
-                    content.Load<Texture2D>("walk_right_2"),
-                    content.Load<Texture2D>("walk_right_3")
-                }
-            },
-        };
+        foreach (var dir in DirectionHelper.ClockwiseOrder)
+        {
+            _animTextures.TryAdd(
+                    dir,
+                    new SpriteSheetManager() { IsAnimation = true }
+                        .LoadSpritesheet(
+                            $"Player/Default/{dir}#walking",
+                            _device,
+                            content)
+                );
+        }
 
         UpdateCurrentTexture();
     }
 
     public void Update(GameTime gameTime)
     {
+        frame++;
+        //if (state == PlayerState.Idle) Debug.WriteLine("Idle"); 
         HandleInput(gameTime);
-        UpdateCurrentTexture();
-        Animate(gameTime);
+        if (state == PlayerState.Idle) return;
+        if (frame % 4 == 0) UpdateCurrentTexture();
     }
 
     private void HandleInput(GameTime gameTime)
     {
-        // Update velocity and direction based on input
+        if (!UpdateDirection()) { state = PlayerState.Idle; return; }
         Velocity = Vector2.Zero;
 
-        if (Keyboard.GetState().IsKeyDown(Keys.W))
+        _velocity.X = 0;
+        _velocity.Y = 0;
+
+        if ((direction & Direction.S) != 0) _velocity.Y += 1;
+        if ((direction & Direction.N) != 0) _velocity.Y -= 1;
+        if ((direction & Direction.E) != 0) _velocity.X += 1;
+        if ((direction & Direction.W) != 0) _velocity.X -= 1;
+
+        if (_velocity.X != 0 && _velocity.Y != 0)
         {
-            _velocity.Y = -1;
-            _direction = Direction.Up;
+            var length = Math.Sqrt(_velocity.X * _velocity.X + _velocity.Y * _velocity.Y);
+            _velocity.X /= (float)length;
+            _velocity.Y /= (float)length;
         }
-        if (Keyboard.GetState().IsKeyDown(Keys.S))
-        {
-            _velocity.Y = 1;
-            _direction = Direction.Down;
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.A))
-        {
-            _velocity.X = -1;
-            _direction = Direction.Left;
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.D))
-        {
-            _velocity.X = 1;
-            _direction = Direction.Right;
-        }
+
         if (_velocity != Vector2.Zero)
         {
             _velocity.Normalize();
-            _state = PlayerState.Walking;
+            state = PlayerState.Walking;
         }
         else
         {
-            _state = PlayerState.Idle;
+            state = PlayerState.Idle;
         }
 
-        Position += _velocity * 100f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        Position += 1.75f * _velocity * 100f * (float)gameTime.ElapsedGameTime.TotalSeconds;
     }
-
-    private void Animate(GameTime gameTime)
-    {
-        var key = (_state, _direction);
-
-        if (_animations.ContainsKey(key))
-        {
-            var frames = _animations[key];
-
-            if (frames.Length > 1)
-            {
-                _animationTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                if (_animationTimer >= _animationSpeed)
-                {
-                    _animationTimer = 0f;
-                    _currentFrame = (_currentFrame + 1) % frames.Length;
-                }
-            }
-            else
-            {
-                _currentFrame = 0;
-            }
-
-            CurrentTexture = frames[_currentFrame];
-        }
-    }
-
     private void UpdateCurrentTexture()
     {
-        CurrentTexture = _animations[(_state, _direction)][_currentFrame];
+        CurrentTexture = _animTextures[direction].GetNextTexture();
+    }
+
+    public bool UpdateDirection()
+    {
+        bool up = Keyboard.GetState().IsKeyDown(Keys.W);
+        bool down = Keyboard.GetState().IsKeyDown(Keys.S);
+        bool left = Keyboard.GetState().IsKeyDown(Keys.A);
+        bool right = Keyboard.GetState().IsKeyDown(Keys.D);
+
+        if (!up && !down && !left && !right) return false;
+
+        if (down && right) direction = Direction.SE;
+        else if (down && left) direction = Direction.SW;
+        else if (up && left) direction = Direction.NW;
+        else if (up && right) direction = Direction.NE;
+        else if (down) direction = Direction.S;
+        else if (up) direction = Direction.N;
+        else if (left) direction = Direction.W;
+        else if (right) direction = Direction.E;
+        return true;
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
         if (CurrentTexture != null)
         {
+            if (state == PlayerState.Idle)
+            {
+                spriteBatch.Draw(_idleSpriteManager.Spritesheet[DirectionHelper.GetClockwiseIndex(direction)],
+                    Position,
+                    Color.White);
+                return;
+            }
+
             spriteBatch.Draw(CurrentTexture, Position, Color.White);
         }
     }

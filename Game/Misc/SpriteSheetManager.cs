@@ -1,15 +1,25 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Misc;
-
-internal class SpriteSheetManager
+public struct Expression(int currentVal, int minVal, int maxVal, int actionVal)
 {
-    private readonly List<Texture2D[,]> _spritesheets = new(); // Each spritesheet contains a grid of textures
-    private Expression _expression; // Tracks the state for returning textures
-    private const int TextureWidth = 64; // Width of a single texture
-    private const int TextureHeight = 96; // Height of a single texture
+    public int CurrentVal = currentVal;
+    public int MinVal = minVal;
+    public int MaxVal = maxVal;
+    public int ActionVal = actionVal;
+};
+
+/// <summary>
+/// Manages texture return for animation; iteratively <br/>
+/// </summary>
+public class SpriteSheetManager
+{
+    public bool IsAnimation { get; init; } = false;
+    public List<Texture2D> Spritesheet { get; } = new(8); // Each spritesheet contains a grid of textures
+    protected Expression _expression; // Tracks the state for returning textures
+    protected int TextureWidth { get; init; } = 64; // Width of a single texture
+    protected int TextureHeight { get; init; } = 96; // Height of a single texture
 
     /// <summary>
     /// Initializes the spritesheet manager with the given range expression.
@@ -23,62 +33,62 @@ internal class SpriteSheetManager
         _expression = new Expression(currentVal, minVal, maxVal, actionVal);
     }
 
+    public SpriteSheetManager() : this(-1, 0, 8, 1) { }
+
     /// <summary>
     /// Loads a spritesheet and extracts individual textures.
     /// </summary>
     /// <param name="spritesheetPath">Path to the spritesheet image file.</param>
     /// <param name="graphicsDevice">Graphics device for creating textures.</param>
-    public void LoadSpritesheet(string spritesheetPath, GraphicsDevice graphicsDevice)
+    public SpriteSheetManager LoadSpritesheet(
+        string spritesheetPath,
+        GraphicsDevice graphicsDevice,
+        Microsoft.Xna.Framework.Content.ContentManager content)
     {
-        var spritesheet = Texture2D.FromFile(graphicsDevice, spritesheetPath);
+        Texture2D spritesheet;
+        spritesheet = content.Load<Texture2D>(spritesheetPath);
+
         int columns = spritesheet.Width / TextureWidth;
-        int rows = spritesheet.Height / TextureHeight;
 
-        var textures = new Texture2D[rows, columns];
-
-        for (int y = 0; y < rows; y++)
+        for (int x = 0; x < columns; x++)
         {
-            for (int x = 0; x < columns; x++)
-            {
-                var texture = new Texture2D(graphicsDevice, TextureWidth, TextureHeight);
-                var data = new Color[TextureWidth * TextureHeight];
-                spritesheet.GetData(0, new Microsoft.Xna.Framework.Rectangle(x * TextureWidth, y * TextureHeight, TextureWidth, TextureHeight), data, 0, data.Length);
-                texture.SetData(data);
-                textures[y, x] = texture;
-            }
-        }
+            Texture2D texture;
+            texture = new Texture2D(graphicsDevice, TextureWidth, TextureHeight);
 
-        _spritesheets.Add(textures);
+            var data = new Microsoft.Xna.Framework.Color[TextureWidth * TextureHeight];
+
+            var rect = new Microsoft.Xna.Framework.Rectangle(
+                x * TextureWidth, 0,
+                TextureWidth, TextureHeight);
+
+            spritesheet.GetData(0, rect, data, 0, data.Length);
+
+            texture.SetData(data);
+
+            if (!IsAnimation) texture.Name = "Idle"; 
+
+            Spritesheet.Add(texture);
+        }
+        spritesheet.Dispose();
+        return this;
     }
 
     /// <summary>
-    /// Gets the next texture based on the current state of the expression.
+    /// Gets the next texture based on the current state of the expression.<br/>
+    /// Handles the state of private member <see cref="Expression"/>
     /// </summary>
     /// <returns>The next texture to render.</returns>
     public Texture2D GetNextTexture()
     {
-        // Calculate the spritesheet and texture indices
-        int totalTexturesPerSheet = _spritesheets[0].GetLength(0) * _spritesheets[0].GetLength(1);
-        int totalTextures = totalTexturesPerSheet * _spritesheets.Count;
-
-        int flatIndex = _expression.CurrentVal % totalTextures;
-        int spritesheetIndex = flatIndex / totalTexturesPerSheet;
-        int textureIndex = flatIndex % totalTexturesPerSheet;
-
-        int rows = _spritesheets[spritesheetIndex].GetLength(0);
-        int columnIndex = textureIndex % rows;
-        int rowIndex = textureIndex / rows;
-
         // Update the expression state
+
+        _expression.CurrentVal += _expression.ActionVal;
+
         if (_expression.CurrentVal == _expression.MaxVal)
         {
             _expression.CurrentVal = _expression.MinVal;
         }
-        else
-        {
-            _expression.CurrentVal += _expression.ActionVal;
-        }
 
-        return _spritesheets[spritesheetIndex][rowIndex, columnIndex];
+        return Spritesheet[_expression.CurrentVal];
     }
 }
