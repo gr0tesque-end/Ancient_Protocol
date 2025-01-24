@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Threading.Tasks;
 using Game.Misc;
+using Game.Optimization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -26,12 +28,13 @@ public enum Direction : byte
     NE = N | E  // North-East
 }
 public class Player
-    : IRenderable, ICamareFollowable
+    : IRenderable, ICamareFollowable, ICheckStateInParallel
 {
     public Vector2 Position { get; private set; }
 
     private Vector2 _velocity;
     public Vector2 Velocity { get => _velocity; private set => _velocity = value; }
+    public float SpeedModifier { get; set; } = 1.75f;
     public Texture2D CurrentTexture { get; private set; }
 
     private ConcurrentDictionary<Direction, SpriteSheetManager> _animTextures;
@@ -39,6 +42,9 @@ public class Player
 
     public PlayerState state;
     public Direction direction;
+    public Func<bool>[] Checkings { get; }
+
+    ICheckStateInParallel ParallelCheckingInstance;
     private GraphicsDevice _device;
     byte frame = 0;
 
@@ -48,6 +54,38 @@ public class Player
         _device = device;
         state = PlayerState.Idle;
         direction = Direction.S;
+
+        ParallelCheckingInstance = this;
+        Checkings =
+        [
+            CheckAnimationRendering
+        ];
+    }
+
+    /// <summary>
+    /// Checks whether <see cref="CurrentTexture"/> needs to be updated with the next <see cref="AnimationTexture2D"/> object
+    /// <br/> If state is idle - does nothing
+    /// </summary>
+    /// <returns><see cref="true"/> if texture was changed;<br/>
+    /// <see cref="false"/> if no changes were made
+    /// </returns>
+    private bool CheckAnimationRendering()
+    {
+        if (state == PlayerState.Idle) return false;
+        if (frame % 4 == 0) UpdateCurrentAnimTexture();
+        else { return false; }
+        return true;
+    }
+
+    private bool CheckAndUpdateFrameCounter()
+    {
+        if (frame >= 60) frame = 0;
+        else
+        {
+            ++frame;
+            return false;
+        }
+        return true;
     }
 
     public void LoadContent(ContentManager content)
@@ -81,18 +119,21 @@ public class Player
                 );
         }
 
-        UpdateCurrentTexture();
+        /*UpdateCurrentAnimTexture();*/
     }
 
     public void Update(GameTime gameTime)
     {
-        frame++;
+        CheckAndUpdateFrameCounter();
         //if (state == PlayerState.Idle) Debug.WriteLine("Idle"); 
         HandleInput(gameTime);
-        if (state == PlayerState.Idle) return;
-        if (frame % 4 == 0) UpdateCurrentTexture();
+        ParallelCheckingInstance.RunAllCheckings();
     }
 
+    /// <summary>
+    /// Handles input, updates state, direction and position respectfully
+    /// </summary>
+    /// <param name="gameTime"></param>
     private void HandleInput(GameTime gameTime)
     {
         if (!UpdateDirection()) { state = PlayerState.Idle; return; }
@@ -123,13 +164,12 @@ public class Player
             state = PlayerState.Idle;
         }
 
-        Position += 1.75f * _velocity * 100f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        Position += SpeedModifier * _velocity * 100f * (float)gameTime.ElapsedGameTime.TotalSeconds;
     }
-    private void UpdateCurrentTexture()
+    private void UpdateCurrentAnimTexture()
     {
         CurrentTexture = _animTextures[direction].GetNextTexture();
     }
-
     public bool UpdateDirection()
     {
         bool up = Keyboard.GetState().IsKeyDown(Keys.W);

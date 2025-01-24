@@ -9,7 +9,12 @@ namespace Game;
 public class AProtocol 
     : Microsoft.Xna.Framework.Game
 {
+    // Not Thread-Safe;
+    // Not recommended to run in any thread but the Main one
     private GraphicsDeviceManager _graphics;
+
+    // Not Thread-Safe
+    // Not recommended to run in any thread but the Main one
     private SpriteBatch _spriteBatch;
 
     private Player _player;
