@@ -26,7 +26,7 @@ public enum Direction : byte
     NE = N | E  // North-East
 }
 public class Player
-    : IRenderable
+    : IRenderable, ICamareFollowable
 {
     public Vector2 Position { get; private set; }
 
@@ -55,6 +55,7 @@ public class Player
         _animTextures = new ConcurrentDictionary<Direction, SpriteSheetManager>();
         _idleSpriteManager = new SpriteSheetManager() { IsAnimation = false };
         _idleSpriteManager.LoadSpritesheet("Player/Default/#idle", _device, content);
+
 
         /*Parallel.ForEach(DirectionHelper.ClockwiseOrder, (dir) =>
         {

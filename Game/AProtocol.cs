@@ -1,4 +1,5 @@
-﻿using Game.Renderables.Player;
+﻿using Game.Misc;
+using Game.Renderables.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,6 +13,7 @@ public class AProtocol
     private SpriteBatch _spriteBatch;
 
     private Player _player;
+    private Camera _camera;
 
     public AProtocol()
     {
@@ -26,6 +28,7 @@ public class AProtocol
     protected override void Initialize()
     {
         _player = new Player(new Vector2(940f, 440f), _graphics.GraphicsDevice);
+        _camera = new Camera();
         base.Initialize();
     }
 
@@ -41,6 +44,7 @@ public class AProtocol
             Exit();
 
         _player.Update(gameTime);
+        _camera.Follow(_player, GraphicsDevice.Viewport, new(64, 96));
         base.Update(gameTime);
     }
 
@@ -48,7 +52,7 @@ public class AProtocol
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        _spriteBatch.Begin();
+        _spriteBatch.Begin(transformMatrix: _camera.Transform);
         _player.Draw(_spriteBatch);
         _spriteBatch.End();
         base.Draw(gameTime);

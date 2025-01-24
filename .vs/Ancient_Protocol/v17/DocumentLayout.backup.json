@@ -7,6 +7,26 @@
       "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\renderables\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\aprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\aprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\misc\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\misc\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\misc\\directionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\misc\\directionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\misc\\icamerafollowable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\misc\\icamerafollowable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\game.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\game.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -15,20 +35,8 @@
       "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\misc\\spritesheetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\misc\\directionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\misc\\directionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\misc\\animationtexture2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\misc\\animationtexture2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\aprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\aprotocol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|c:\\projects\\ancient_protocol\\game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11202B42-EDCE-4CEC-A8B4-4D39E116F483}|Game\\Game.csproj|solutionrelative:game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -56,53 +64,48 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 9,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Interop.cs",
-              "DocumentMoniker": "C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2eb7d78177d27bce5b64f9a11d65f36e3c2ab6796089eafabb43594ce84c7786\\Interop.cs",
-              "RelativeDocumentMoniker": "..\\..\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2eb7d78177d27bce5b64f9a11d65f36e3c2ab6796089eafabb43594ce84c7786\\Interop.cs",
-              "ToolTip": "C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2eb7d78177d27bce5b64f9a11d65f36e3c2ab6796089eafabb43594ce84c7786\\Interop.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2eb7d78177d27bce5b64f9a11d65f36e3c2ab6796089eafabb43594ce84c7786\\Interop.cs [Read Only]",
-              "ViewState": "AgIAAOwEAAAAAAAAAAAkwPIEAAAGAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "ICameraFollowable.cs",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\ICameraFollowable.cs",
+              "RelativeDocumentMoniker": "Game\\Misc\\ICameraFollowable.cs",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\ICameraFollowable.cs*",
+              "RelativeToolTip": "Game\\Misc\\ICameraFollowable.cs*",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T18:25:00.752Z",
-              "EditorCaption": " [Read Only]"
+              "WhenOpened": "2025-01-24T10:45:15.164Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "WaitHandle.cs",
-              "DocumentMoniker": "C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs",
-              "RelativeDocumentMoniker": "..\\..\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs",
-              "ToolTip": "C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs [Read Only]",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAkwIQAAAADAAAAAQAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Camera.cs",
+              "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\Camera.cs",
+              "RelativeDocumentMoniker": "Game\\Misc\\Camera.cs",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\Camera.cs*",
+              "RelativeToolTip": "Game\\Misc\\Camera.cs*",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAmwA4AAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T18:24:54.107Z",
-              "EditorCaption": " [Read Only]"
+              "WhenOpened": "2025-01-24T10:44:57.254Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Icon.bmp",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Icon.bmp",
               "RelativeDocumentMoniker": "Game\\Icon.bmp",
               "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Icon.bmp",
               "RelativeToolTip": "Game\\Icon.bmp",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2025-01-23T17:57:44.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T17:57:44.247Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "AnimationTexture2D.cs",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\AnimationTexture2D.cs",
               "RelativeDocumentMoniker": "Game\\Misc\\AnimationTexture2D.cs",
@@ -110,37 +113,35 @@
               "RelativeToolTip": "Game\\Misc\\AnimationTexture2D.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T17:39:39.056Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T17:39:39.056Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DirectionHelper.cs",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\DirectionHelper.cs",
               "RelativeDocumentMoniker": "Game\\Misc\\DirectionHelper.cs",
               "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\DirectionHelper.cs",
               "RelativeToolTip": "Game\\Misc\\DirectionHelper.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBgAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T16:49:06.346Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "#idle.png",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Content\\Player\\Default\\#idle.png",
               "RelativeDocumentMoniker": "Game\\Content\\Player\\Default\\#idle.png",
               "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Content\\Player\\Default\\#idle.png",
               "RelativeToolTip": "Game\\Content\\Player\\Default\\#idle.png",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2025-01-23T09:05:36.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T09:05:36.749Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "SpriteSheetManager.cs",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Misc\\SpriteSheetManager.cs",
               "RelativeDocumentMoniker": "Game\\Misc\\SpriteSheetManager.cs",
@@ -148,12 +149,11 @@
               "RelativeToolTip": "Game\\Misc\\SpriteSheetManager.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAAwEMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T19:19:22.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T19:19:22.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Program.cs",
               "RelativeDocumentMoniker": "Game\\Program.cs",
@@ -166,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "IRenderable.cs",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Renderables\\IRenderable.cs",
               "RelativeDocumentMoniker": "Game\\Renderables\\IRenderable.cs",
@@ -174,8 +174,7 @@
               "RelativeToolTip": "Game\\Renderables\\IRenderable.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T09:35:02.404Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T09:35:02.404Z"
             },
             {
               "$type": "Document",
@@ -185,36 +184,66 @@
               "RelativeDocumentMoniker": "Game\\Renderables\\Player\\Player.cs",
               "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Renderables\\Player\\Player.cs*",
               "RelativeToolTip": "Game\\Renderables\\Player\\Player.cs*",
-              "ViewState": "AgIAAFUAAAAAAAAAAAD4v1oAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAjwGsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-22T09:34:53.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "AProtocol.cs",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\AProtocol.cs",
               "RelativeDocumentMoniker": "Game\\AProtocol.cs",
-              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\AProtocol.cs",
-              "RelativeToolTip": "Game\\AProtocol.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAhwCoAAAAIAAAAAAAAAA==",
+              "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\AProtocol.cs*",
+              "RelativeToolTip": "Game\\AProtocol.cs*",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAYwCsAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-22T09:30:17.363Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
+              "Title": "WaitHandle.cs",
+              "DocumentMoniker": "C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs",
+              "RelativeDocumentMoniker": "..\\..\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs",
+              "ToolTip": "C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2ffd1c19be79e05c111cba67f59d9697391c29636876d10db5800df3a2d6cfcf\\WaitHandle.cs [Read Only]",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAkwIQAAAADAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T18:24:54.107Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Game.csproj",
               "DocumentMoniker": "C:\\Projects\\Ancient_Protocol\\Game\\Game.csproj",
               "RelativeDocumentMoniker": "Game\\Game.csproj",
               "ToolTip": "C:\\Projects\\Ancient_Protocol\\Game\\Game.csproj",
               "RelativeToolTip": "Game\\Game.csproj",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-01-22T09:29:43.079Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Interop.cs",
+              "DocumentMoniker": "C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2eb7d78177d27bce5b64f9a11d65f36e3c2ab6796089eafabb43594ce84c7786\\Interop.cs",
+              "RelativeDocumentMoniker": "..\\..\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2eb7d78177d27bce5b64f9a11d65f36e3c2ab6796089eafabb43594ce84c7786\\Interop.cs",
+              "ToolTip": "C:\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2eb7d78177d27bce5b64f9a11d65f36e3c2ab6796089eafabb43594ce84c7786\\Interop.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\Users\\grotesque\\AppData\\Local\\Temp\\.vsdbgsrc\\2eb7d78177d27bce5b64f9a11d65f36e3c2ab6796089eafabb43594ce84c7786\\Interop.cs [Read Only]",
+              "ViewState": "AgIAAOwEAAAAAAAAAAAkwPIEAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T18:25:00.752Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
