@@ -18,8 +18,8 @@ public class SpriteSheetManager
     public bool IsAnimation { get; init; } = false;
     public List<Texture2D> Spritesheet { get; } = new(8); // Each spritesheet contains a grid of textures
     protected Expression _expression; // Tracks the state for returning textures
-    protected int TextureWidth { get; init; } = 64; // Width of a single texture
-    protected int TextureHeight { get; init; } = 96; // Height of a single texture
+    public int TextureWidth { get; init; } = 64; // Width of a single texture
+    public int TextureHeight { get; init; } = 96; // Height of a single texture
 
     /// <summary>
     /// Initializes the spritesheet manager with the given range expression.
