@@ -16,12 +16,15 @@ public static class DirectionHelper
         Direction.E
     };
 
-    public static int GetClockwiseIndex(Direction dir)
+    public static readonly Dictionary<Direction, int> dirIndex = new()
     {
-        for (int i = 0; i < ClockwiseOrder.Length; i++)
-        {
-            if (ClockwiseOrder[i] == dir) return i;
-        }
-        return -1;
-    }
+        { Direction.SE, 0 },
+        { Direction.S, 1 },
+        { Direction.SW, 2 },
+        { Direction.W, 3 },
+        { Direction.NW, 4 },
+        { Direction.N, 5 },
+        { Direction.NE, 6 },
+        { Direction.E, 7 }
+    };
 }

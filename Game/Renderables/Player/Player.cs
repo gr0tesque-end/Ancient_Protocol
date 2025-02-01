@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using Game.Misc;
 using Game.Optimization;
 using Microsoft.Xna.Framework;
@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game.Renderables.Player;
 
-public delegate void DrawCall(Texture2D texture, Vector2 position, Color color);
+//public delegate void DrawCall(Texture2D texture, Vector2 position, Color color);
 public enum PlayerState
 {
     Idle,
@@ -31,7 +31,7 @@ public enum Direction : byte
 }
 
 public class Player
-    : IRenderable, ICheckStateInParallel
+    : IRenderable
 {
     public Vector2 Position { get; private set; }
     public Rectangle Bounds { get; private set; }
@@ -42,7 +42,9 @@ public class Player
     public Texture2D CurrentTexture { get; private set; }
 
     private ConcurrentDictionary<Direction, SpriteSheetManager> _animTextures;
-    private SpriteSheetManager _idleSpriteManager;
+    private SpriteSheetContainer _idleSpriteContainer;
+
+    private ParallelStateChecker _stateChecker;
 
     private PlayerState _state;
     public PlayerState state
@@ -56,7 +58,7 @@ public class Player
     }
 
     private Direction _dir;
-    public Direction direction 
+    public Direction direction
     {
         get => _dir;
         set
@@ -73,7 +75,6 @@ public class Player
     private bool isStateChanged;
     public Func<bool>[] Checkings { get; }
 
-    ICheckStateInParallel ParallelCheckingInstance;
     private GraphicsDevice _device;
     byte frame = 0;
 
@@ -87,45 +88,43 @@ public class Player
         state = PlayerState.Idle;
         direction = Direction.S;
 
-        ParallelCheckingInstance = this;
-        Checkings =
-        [
-            CheckAnimationRendering
-        ];
+        _stateChecker = new()
+        {
+            StateCheckers = [
+                CheckAnimationRendering
+            ]
+        };
     }
 
     /// <summary>
-    /// Checks whether <see cref="CurrentTexture"/> needs to be updated with the next <see cref="AnimationTexture2D"/> object
+    /// Checks whether <see cref="CurrentTexture"/> needs to be updated with the next animation sprite
     /// <br/> If state is idle - does nothing
     /// </summary>
     /// <returns><see cref="true"/> if texture was changed;<br/>
     /// <see cref="false"/> if no changes were made
     /// </returns>
-    private bool CheckAnimationRendering()
+    private void CheckAnimationRendering()
     {
-        if (state == PlayerState.Idle) return false;
+        if (state == PlayerState.Idle) return;
         if (frame % 5 == 0) UpdateCurrentAnimTexture();
-        else { return false; }
-        return true;
     }
 
-    private bool CheckAndUpdateFrameCounter()
+    private void CheckAndUpdateFrameCounter()
     {
         if (frame >= 60) frame = 0;
         else
         {
             ++frame;
-            return false;
         }
-        
-        return true;
     }
 
     public void LoadContent(ContentManager content)
     {
         _animTextures = new ConcurrentDictionary<Direction, SpriteSheetManager>();
-        _idleSpriteManager = new SpriteSheetManager() { IsAnimation = false };
-        _idleSpriteManager.LoadSpritesheet("Player/Default/#idle", _device, content);
+        _idleSpriteContainer = new SpriteSheetContainer();
+        _idleSpriteContainer.LoadSpritesheet
+            ("Player/Default/#idle", _device, content);
+        CurrentTexture = _idleSpriteContainer.Spritesheet[1];
 
         /*Parallel.ForEach(DirectionHelper.ClockwiseOrder, (dir) =>
         {
@@ -143,7 +142,7 @@ public class Player
         {
             _animTextures.TryAdd(
                     dir,
-                    new SpriteSheetManager() { IsAnimation = true }
+                    (SpriteSheetManager) new SpriteSheetManager()
                         .LoadSpritesheet(
                             $"Player/Default/{dir}#walking",
                             _device,
@@ -154,18 +153,10 @@ public class Player
         Bounds = new(
             (int)Position.X,
             (int)Position.Y,
-            _idleSpriteManager.TextureWidth,
-            _idleSpriteManager.TextureHeight);
+            _idleSpriteContainer.TextureWidth,
+            _idleSpriteContainer.TextureHeight);
 
         /*UpdateCurrentAnimTexture();*/
-    }
-
-    public void Update(GameTime gameTime)
-    {
-        CheckAndUpdateFrameCounter();
-        isDirChanged = false; isStateChanged = false;
-        HandleInput(gameTime);
-        ParallelCheckingInstance.RunAllCheckings();
     }
 
     /// <summary>
@@ -174,7 +165,9 @@ public class Player
     /// <param name="gameTime"></param>
     private void HandleInput(GameTime gameTime)
     {
-        if (!UpdateDirection()) { state = PlayerState.Idle; return; }
+        var kState = Keyboard.GetState();
+
+        if (!UpdateDirection(kState)) { state = PlayerState.Idle; return; }
         Velocity = Vector2.Zero;
 
         _velocity.X = 0;
@@ -208,12 +201,12 @@ public class Player
     {
         CurrentTexture = _animTextures[direction].GetNextTexture();
     }
-    public bool UpdateDirection()
+    public bool UpdateDirection(KeyboardState kState)
     {
-        bool up = Keyboard.GetState().IsKeyDown(Keys.W);
-        bool down = Keyboard.GetState().IsKeyDown(Keys.S);
-        bool left = Keyboard.GetState().IsKeyDown(Keys.A);
-        bool right = Keyboard.GetState().IsKeyDown(Keys.D);
+        bool up = kState.IsKeyDown(Keys.W);
+        bool down = kState.IsKeyDown(Keys.S);
+        bool left = kState.IsKeyDown(Keys.A);
+        bool right = kState.IsKeyDown(Keys.D);
 
         if (!up && !down && !left && !right) return false;
 
@@ -225,22 +218,39 @@ public class Player
         else if (up) direction = Direction.N;
         else if (left) direction = Direction.W;
         else if (right) direction = Direction.E;
+
         return true;
+    }
+
+    public void Update(GameTime gameTime)
+    {
+        CheckAndUpdateFrameCounter();
+        isDirChanged = false; isStateChanged = false;
+        HandleInput(gameTime);
+        _stateChecker.UpdateAllStates();
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        if (CurrentTexture != null)
-        {
-            if (isStateChanged & state == PlayerState.Idle)
-            {
-                spriteBatch.Draw(_idleSpriteManager.Spritesheet[DirectionHelper.GetClockwiseIndex(direction)],
-                    Position,
-                    Color.White);
-                return;
-            }
+        //spriteBatch.Draw(_idleSpriteContainer.Spritesheet[0], Position, Color.White);
 
-            spriteBatch.Draw(CurrentTexture, Position, Color.White);
+        //Debug.WriteLine($"Player: {Position}\n Camera: {Camera.ViewRectangle}");
+
+        if (isStateChanged & state == PlayerState.Idle)
+        {
+            spriteBatch.Draw(
+                _idleSpriteContainer
+                    .Spritesheet[
+                        DirectionHelper.dirIndex[direction]
+                    ],
+                Position,
+                Color.White);
+            return;
         }
+
+        if (CurrentTexture is null) return;
+
+        spriteBatch.Draw(CurrentTexture, Position, Color.White);
+
     }
 }

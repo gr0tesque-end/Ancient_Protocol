@@ -10,23 +10,26 @@ public class Tile
     : IRenderable
 {
     public static readonly Vector2 textureSize = new Vector2(64, 64);
-    public Vector2 Position { get; set; }
-    
+    public Vector2 Position { get; private set; }
+    public bool Walkable { get; set; }
     public Texture2D Texture { get; private set; }
-
     public Rectangle Bounds { get; private set; }
+
+    public Tile(Vector2 position, Texture2D texture)
+    {
+        Position = position;
+        Texture = texture;
+        Walkable = true;
+        Bounds = new((int)position.X, (int)position.Y, Texture.Width, Texture.Height);
+    }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        spriteBatch.Draw(Texture, Position, Color.White);
+        spriteBatch.Draw(Texture, Bounds, Color.White);
     }
 
     public void LoadContent(ContentManager content)
-    {
-        Texture = content.Load<Texture2D>("Tiles/Grass/Grass1");
-        Bounds = new((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
-        
-    }
+    {}
 
     public void Update(GameTime gameTime)
     {}

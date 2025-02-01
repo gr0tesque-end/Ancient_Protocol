@@ -10,12 +10,12 @@ using Game.Renderables.Tiles;
 
 namespace Game.Misc;
 
-public class Camera
+public static class Camera
 {
-    public Matrix Transform { get; private set; }
-    public Rectangle ViewRectangle { get; private set; }
+    public static Matrix Transform { get; private set; }
+    public static Rectangle ViewRectangle { get; private set; }
 
-    public void Follow(IRenderable target, Viewport viewport, Vector2 textureSize)
+    public static void Follow(IRenderable target, Viewport viewport, Vector2 textureSize)
     {
         var position = Matrix.CreateTranslation(
             -(target.Position.X + textureSize.X / 2), // Offset X by half the texture width
@@ -31,7 +31,7 @@ public class Camera
 
         ViewRectangle = GetViewRectangle(viewport);
     }
-    private Rectangle GetViewRectangle(Viewport viewport)
+    private static Rectangle GetViewRectangle(Viewport viewport)
     {
         Matrix inverseTransform = Matrix.Invert(Transform);
 
