@@ -1,16 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Security.Permissions;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Misc;
-public struct Tracker(int currentVal, int minVal, int maxVal, int actionVal)
-{
-    public int CurrentVal = currentVal;
-    public int MinVal = minVal;
-    public int MaxVal = maxVal;
-    public int ActionVal = actionVal;
-};
 
 /// <summary>
 /// Manages texture return for animation; iteratively <br/>
@@ -27,13 +18,14 @@ public class SpriteSheetManager
     /// <param name="minVal">Minimum texture index.</param>
     /// <param name="maxVal">Maximum texture index.</param>
     /// <param name="actionVal">Increment value for selecting the next texture.</param>
-    public SpriteSheetManager(int currentVal, int minVal, int maxVal, int actionVal)
+    public SpriteSheetManager(int currentVal, int minVal, int maxVal, UpdateAction actionUpdate)
     {
-        _counter = new Tracker(currentVal, minVal, maxVal, actionVal);
+        _counter = new(currentVal, minVal, maxVal, actionUpdate);
     }
 
-    public SpriteSheetManager() : this(-1, 0, 8, 1) { }
-
+    public SpriteSheetManager() {
+        _counter = new(8);
+    }
     /// <summary>
     /// Gets the next texture based on the current state of the expression.<br/>
     /// Handles the state of private member <see cref="Tracker"/>
@@ -41,15 +33,6 @@ public class SpriteSheetManager
     /// <returns>The next texture to render.</returns>
     public Texture2D GetNextTexture()
     {
-        // Update the expression state
-
-        _counter.CurrentVal += _counter.ActionVal;
-
-        if (_counter.CurrentVal == _counter.MaxVal)
-        {
-            _counter.CurrentVal = _counter.MinVal;
-        }
-
         return Spritesheet[_counter.CurrentVal];
     }
 }

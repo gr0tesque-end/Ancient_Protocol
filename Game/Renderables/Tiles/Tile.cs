@@ -10,18 +10,22 @@ public class Tile
     : IRenderable
 {
     public static readonly Vector2 textureSize = new Vector2(64, 64);
-    public Vector2 Position { get; private set; }
-    public bool Walkable { get; set; }
+    public Vector2 Position => throw new System.NotImplementedException();
     public Texture2D Texture { get; private set; }
-    public Rectangle Bounds { get; private set; }
+    public Rectangle Bounds { get; }
 
     public Tile(Vector2 position, Texture2D texture)
     {
-        Position = position;
         Texture = texture;
-        Walkable = true;
         Bounds = new((int)position.X, (int)position.Y, Texture.Width, Texture.Height);
     }
+
+    public Tile(Rectangle bounds, Texture2D texture)
+    {
+        Texture = texture;
+        Bounds = bounds;
+    }
+
 
     public void Draw(SpriteBatch spriteBatch)
     {

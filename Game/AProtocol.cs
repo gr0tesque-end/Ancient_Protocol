@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using Game.Misc;
 using Game.Renderables;
 using Game.Renderables.Player;
@@ -9,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 namespace Game;
 
-public class AProtocol 
+public class AProtocol
     : Microsoft.Xna.Framework.Game
 {
     // Not Thread-Safe;
@@ -34,17 +33,15 @@ public class AProtocol
         _graphics.IsFullScreen = false;
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-        
+
     }
 
     protected override void Initialize()
     {
         _player = new Player(new Vector2(940f, 440f), _graphics.GraphicsDevice);
 
-        _renderables = [
-            _player
-            ];
         base.Initialize();
+
     }
 
     protected override void LoadContent()
@@ -53,6 +50,20 @@ public class AProtocol
         Textures = [
             Content.Load<Texture2D>("Tiles/Grass/Grass1")
             ];
+#nullable enable
+        _renderables = [
+             new TileMapFactory(
+                 Textures[0], 
+                 new(940 - 64, 440),
+                 1388,
+                 (ref Rectangle r, object[]? args) => r.X += (int)Tile.textureSize.X
+                 ){
+                 UpdateActionOn2dChange = (ref Rectangle r, object[]? args) => 
+                                               r.Y += (int)Tile.textureSize.Y
+             }.Produce2(2),
+            _player
+        ];
+#nullable disable
         _player.LoadContent(Content);
 
         /*_debugTexture = new Texture2D(GraphicsDevice, 1, 1);
@@ -82,7 +93,12 @@ public class AProtocol
 
         //DrawRectangle(_spriteBatch, _camera.ViewRectangle, Color.Red);
 
-        _player.Draw(_spriteBatch);
+        foreach (var item in _renderables)
+        {
+            item.Draw(_spriteBatch);
+        }
+
+        /*_player.Draw(_spriteBatch);*/
 
         _spriteBatch.End();
         base.Draw(gameTime);

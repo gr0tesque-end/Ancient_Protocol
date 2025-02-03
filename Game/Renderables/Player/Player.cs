@@ -16,6 +16,7 @@ public enum PlayerState
     Idle,
     Walking
 }
+
 [Flags]
 public enum Direction : byte
 {
@@ -31,7 +32,7 @@ public enum Direction : byte
 }
 
 public class Player
-    : IRenderable
+    : IRenderable, ICameraFollowable
 {
     public Vector2 Position { get; private set; }
     public Rectangle Bounds { get; private set; }
@@ -39,7 +40,7 @@ public class Player
     private Vector2 _velocity;
     public Vector2 Velocity { get => _velocity; private set => _velocity = value; }
     public float SpeedModifier { get; set; } = 1.75f;
-    public Texture2D CurrentTexture { get; private set; }
+    public Texture2D Texture { get; private set; }
 
     private ConcurrentDictionary<Direction, SpriteSheetManager> _animTextures;
     private SpriteSheetContainer _idleSpriteContainer;
@@ -47,10 +48,10 @@ public class Player
     private ParallelStateChecker _stateChecker;
 
     private PlayerState _state;
-    public PlayerState state
+    public PlayerState State
     {
         get => _state;
-        set
+        private set
         {
             _state = value;
             StateChanged.Invoke();
@@ -58,10 +59,10 @@ public class Player
     }
 
     private Direction _dir;
-    public Direction direction
+    public Direction Direction
     {
         get => _dir;
-        set
+        private set
         {
             _dir = value;
             DirectionChanged.Invoke();
@@ -85,8 +86,8 @@ public class Player
 
         Position = startPosition;
         _device = device;
-        state = PlayerState.Idle;
-        direction = Direction.S;
+        State = PlayerState.Idle;
+        Direction = Direction.S;
 
         _stateChecker = new()
         {
@@ -97,7 +98,7 @@ public class Player
     }
 
     /// <summary>
-    /// Checks whether <see cref="CurrentTexture"/> needs to be updated with the next animation sprite
+    /// Checks whether <see cref="Texture"/> needs to be updated with the next animation sprite
     /// <br/> If state is idle - does nothing
     /// </summary>
     /// <returns><see cref="true"/> if texture was changed;<br/>
@@ -105,7 +106,7 @@ public class Player
     /// </returns>
     private void CheckAnimationRendering()
     {
-        if (state == PlayerState.Idle) return;
+        if (State == PlayerState.Idle) return;
         if (frame % 5 == 0) UpdateCurrentAnimTexture();
     }
 
@@ -124,7 +125,7 @@ public class Player
         _idleSpriteContainer = new SpriteSheetContainer();
         _idleSpriteContainer.LoadSpritesheet
             ("Player/Default/#idle", _device, content);
-        CurrentTexture = _idleSpriteContainer.Spritesheet[1];
+        Texture = _idleSpriteContainer.Spritesheet[1];
 
         /*Parallel.ForEach(DirectionHelper.ClockwiseOrder, (dir) =>
         {
@@ -167,16 +168,16 @@ public class Player
     {
         var kState = Keyboard.GetState();
 
-        if (!UpdateDirection(kState)) { state = PlayerState.Idle; return; }
+        if (!UpdateDirection(kState)) { State = PlayerState.Idle; return; }
         Velocity = Vector2.Zero;
 
         _velocity.X = 0;
         _velocity.Y = 0;
 
-        if ((direction & Direction.S) != 0) _velocity.Y += 1;
-        if ((direction & Direction.N) != 0) _velocity.Y -= 1;
-        if ((direction & Direction.E) != 0) _velocity.X += 1;
-        if ((direction & Direction.W) != 0) _velocity.X -= 1;
+        if ((Direction & Direction.S) != 0) _velocity.Y += 1;
+        if ((Direction & Direction.N) != 0) _velocity.Y -= 1;
+        if ((Direction & Direction.E) != 0) _velocity.X += 1;
+        if ((Direction & Direction.W) != 0) _velocity.X -= 1;
 
         if (_velocity.X != 0 && _velocity.Y != 0)
         {
@@ -188,18 +189,18 @@ public class Player
         if (_velocity != Vector2.Zero)
         {
             _velocity.Normalize();
-            state = PlayerState.Walking;
+            State = PlayerState.Walking;
         }
         else
         {
-            state = PlayerState.Idle;
+            State = PlayerState.Idle;
         }
 
         Position += SpeedModifier * _velocity * 100f * (float)gameTime.ElapsedGameTime.TotalSeconds;
     }
     private void UpdateCurrentAnimTexture()
     {
-        CurrentTexture = _animTextures[direction].GetNextTexture();
+        Texture = _animTextures[Direction].GetNextTexture();
     }
     public bool UpdateDirection(KeyboardState kState)
     {
@@ -210,14 +211,14 @@ public class Player
 
         if (!up && !down && !left && !right) return false;
 
-        if (down && right) direction = Direction.SE;
-        else if (down && left) direction = Direction.SW;
-        else if (up && left) direction = Direction.NW;
-        else if (up && right) direction = Direction.NE;
-        else if (down) direction = Direction.S;
-        else if (up) direction = Direction.N;
-        else if (left) direction = Direction.W;
-        else if (right) direction = Direction.E;
+        if (down && right) Direction = Direction.SE;
+        else if (down && left) Direction = Direction.SW;
+        else if (up && left) Direction = Direction.NW;
+        else if (up && right) Direction = Direction.NE;
+        else if (down) Direction = Direction.S;
+        else if (up) Direction = Direction.N;
+        else if (left) Direction = Direction.W;
+        else if (right) Direction = Direction.E;
 
         return true;
     }
@@ -236,21 +237,21 @@ public class Player
 
         //Debug.WriteLine($"Player: {Position}\n Camera: {Camera.ViewRectangle}");
 
-        if (isStateChanged & state == PlayerState.Idle)
+        if (isStateChanged & State == PlayerState.Idle)
         {
             spriteBatch.Draw(
                 _idleSpriteContainer
                     .Spritesheet[
-                        DirectionHelper.dirIndex[direction]
+                        DirectionHelper.dirIndex[Direction]
                     ],
                 Position,
                 Color.White);
             return;
         }
 
-        if (CurrentTexture is null) return;
+        if (Texture is null) return;
 
-        spriteBatch.Draw(CurrentTexture, Position, Color.White);
+        spriteBatch.Draw(Texture, Position, Color.White);
 
     }
 }

@@ -15,7 +15,7 @@ public static class Camera
     public static Matrix Transform { get; private set; }
     public static Rectangle ViewRectangle { get; private set; }
 
-    public static void Follow(IRenderable target, Viewport viewport, Vector2 textureSize)
+    public static void Follow(ICameraFollowable target, Viewport viewport, Vector2 textureSize)
     {
         var position = Matrix.CreateTranslation(
             -(target.Position.X + textureSize.X / 2), // Offset X by half the texture width
