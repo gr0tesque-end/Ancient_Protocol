@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Game.Renderables.Tiles.Tile">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAEAACAAAAAAAAAAAAAAAIAAAAAAgQ=</HashCode>
+      <FileName>Renderables\Tiles\Tile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Game.Renderables.Tiles.TileMap">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARQAAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAIAAIAAAgQ=</HashCode>
+      <FileName>Renderables\Tiles\TileMap.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Game.Renderables.Tiles.TileMapFactory&lt;T&gt;">
+    <Position X="4" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Renderables\Tiles\TileMapFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Game.Renderables.Tiles.Shapes.CircleShapeProvider" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAGAAAAQAABAAAAAAAAAAAAAAAAABAAAAAAAAIEAA=</HashCode>
+      <FileName>Renderables\Tiles\Shapes\CirleShapeProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Game.Renderables.Tiles.Shapes.RectangleShapeProvider" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABQAAAAAAAAAAAAAAAAFAAAAAAAAIAAA=</HashCode>
+      <FileName>Renderables\Tiles\Shapes\RectangleShapeProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Game.Renderables.Tiles.Wall">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAwAAIAAAAAAAAAAAAAAAAAACAEAAA=</HashCode>
+      <FileName>Renderables\Tiles\Wall.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Game.Misc.DirectionHelper" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAACAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Renderables\Player\DirectionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Optimization.ParallelStateChecker&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAABAAAAAAAA=</HashCode>
+      <FileName>Optimization\ParallelStateChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Optimization.ParallelStateChecker" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAABAAAAAAAA=</HashCode>
+      <FileName>Optimization\ParallelStateChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Misc.Camera" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAIAAAACAE=</HashCode>
+      <FileName>Misc\Camera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Misc.DictionaryCaster" Collapsed="true">
+    <Position X="11.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAgAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Misc\DictionaryCaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Misc.SpriteSheetManager" Collapsed="true">
+    <Position X="7.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAEAA=</HashCode>
+      <FileName>Misc\SpriteSheetManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Misc.SpriteSheetContainer" Collapsed="true">
+    <Position X="7.75" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAASAQAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Misc\SpriteSheetManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Misc.Tracker" Collapsed="true">
+    <Position X="10" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAIAAAAgAgCAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Misc\Tracker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Misc.Tracker&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAAAAAAMAAAAgAgCAAAAAAAIAAAAAAAgABAAA=</HashCode>
+      <FileName>Misc\Tracker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.AProtocol" Collapsed="true">
+    <Position X="4" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAAAAAwBAAAAACAgAAgAAAAACAIAAAAAAAAY=</HashCode>
+      <FileName>AProtocol.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Renderables.Player.Player">
+    <Position X="13.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIRCAACAAAIAAgAgACAJCAAAAQAAgAQAAAIABQEUAqQ=</HashCode>
+      <FileName>Renderables\Player\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Game.Renderables.IRenderable" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAIAAAAAAgQ=</HashCode>
+      <FileName>Renderables\IRenderable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Renderables.IPositionTrackable">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Renderables\IPositionTrackable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Renderables.IRenderableContainer">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Renderables\IRenderableContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Renderables.Tiles.Shapes.IShapeProvider" Collapsed="true">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Renderables\Tiles\Shapes\IShapeProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Misc.IFactory&lt;T&gt;" Collapsed="true">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Misc\IFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Game.Misc.Direction">
+    <Position X="10" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACEAAAAAAAAAAAQgAAAAAAAAAAhCIAAA=</HashCode>
+      <FileName>Misc\Directions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Game.Renderables.Player.PlayerState" Collapsed="true">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Renderables\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Game.Misc.UpdateAction" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Misc\Tracker.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Game.Misc.UpdateAction&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Misc\Tracker.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
